@@ -1,9 +1,12 @@
 package com.amf.banking.system.controller;
 
+import com.amf.banking.system.dto.AccountRequestDto;
+import com.amf.banking.system.dto.AccountResponseDto;
 import com.amf.banking.system.service.AccountService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -11,4 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
     private final AccountService service;
+
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public AccountResponseDto create(@RequestBody @Valid AccountRequestDto accountRequestDto) {
+        return null;
+    }
 }

@@ -22,6 +22,10 @@ public class ClientService {
         return  modelMapper.map(clientBd, ClientResponseDto.class);
     }
 
+    public boolean existsById(String id){
+        return repository.existsById(id);
+    }
+
 
 
 }

@@ -15,10 +15,9 @@ public class AccountController {
 
     private final AccountService service;
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AccountResponseDto create(@RequestBody @Valid AccountRequestDto accountRequestDto) {
-        return null;
+        return service.create(accountRequestDto);
     }
 }

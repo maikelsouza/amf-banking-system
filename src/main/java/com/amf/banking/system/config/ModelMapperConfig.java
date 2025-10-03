@@ -13,7 +13,7 @@ public class ModelMapperConfig {
     public ModelMapper modelMapper() {
         ModelMapper mapper = new ModelMapper();
         mapper.typeMap(AccountRequestDto.class, Account.class)
-                .addMappings(m -> m.skip(Account::setId)); // ignora id
+                .addMappings(m -> m.skip(Account::setId));
         return mapper;
     }
 }

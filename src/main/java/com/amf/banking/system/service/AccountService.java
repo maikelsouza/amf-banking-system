@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 @AllArgsConstructor
@@ -28,6 +29,12 @@ public class AccountService {
         account.setAccountNumber(generateAccountNumber());
         Account accountBd = repository.save(account);
         return  modelMapper.map(accountBd, AccountResponseDto.class);
+    }
+
+    public BigDecimal getAccountBalance(String id){
+        Account account = repository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
+        return account.getBalance();
     }
 
     private String generateAccountNumber() {

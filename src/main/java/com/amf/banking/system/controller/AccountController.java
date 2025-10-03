@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/accounts")
@@ -20,4 +22,11 @@ public class AccountController {
     public AccountResponseDto create(@RequestBody @Valid AccountRequestDto accountRequestDto) {
         return service.create(accountRequestDto);
     }
+
+    @GetMapping("/{id}/balance")
+    public BigDecimal getAccountBalance(@PathVariable String id) {
+        return service.getAccountBalance(id);
+    }
+
+
 }

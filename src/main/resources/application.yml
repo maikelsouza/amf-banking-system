@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: amf-banking-system
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: bankingdb
+      username: root
+      password: example
+      authentication-database: admin
+      auto-index-creation: true
+
+server:
+  port: 8080
+

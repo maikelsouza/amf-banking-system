@@ -32,9 +32,22 @@ public class AccountService {
     }
 
     public BigDecimal getAccountBalance(String id){
-        Account account = repository.findById(id).
-                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
+        Account account = getAccount(id);
         return account.getBalance();
+    }
+
+    public void deposit(String id, BigDecimal amount){
+        if (amount.compareTo(BigDecimal.ZERO) < 0){
+            throw new IllegalArgumentException("O valor do depósito deve ser positivo");
+        }
+        Account account = getAccount(id);
+        account.setBalance(account.getBalance().add(amount));
+        repository.save(account);
+    }
+
+    private Account getAccount(String id) {
+        return repository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
     }
 
     private String generateAccountNumber() {

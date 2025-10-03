@@ -2,6 +2,7 @@ package com.amf.banking.system.controller;
 
 import com.amf.banking.system.dto.AccountRequestDto;
 import com.amf.banking.system.dto.AccountResponseDto;
+import com.amf.banking.system.dto.DepositAmountRequestDto;
 import com.amf.banking.system.service.AccountService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,10 @@ public class AccountController {
         return service.getAccountBalance(id);
     }
 
+    @PatchMapping("/{id}/deposit")
+    public void deposit(@PathVariable String id,
+                              @RequestBody DepositAmountRequestDto depositAmountRequestDto) {
+        service.deposit(id, depositAmountRequestDto.getAmount());
+    }
 
 }

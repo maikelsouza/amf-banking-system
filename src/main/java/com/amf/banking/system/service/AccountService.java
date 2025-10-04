@@ -32,8 +32,7 @@ public class AccountService {
     }
 
     public BigDecimal getAccountBalance(String number){
-        Account account = repository.findByAccountNumber(number).
-                        orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
+        Account account = getAccount(number);
         return account.getBalance();
     }
 
@@ -41,8 +40,7 @@ public class AccountService {
         if (amount.compareTo(BigDecimal.ZERO) < 0){
             throw new IllegalArgumentException("O valor do depósito deve ser positivo");
         }
-        Account account = repository.findByAccountNumber(number).
-                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
+        Account account = getAccount(number);
         account.setBalance(account.getBalance().add(amount));
         repository.save(account);
     }
@@ -51,16 +49,13 @@ public class AccountService {
         if (amount.compareTo(BigDecimal.ZERO) < 0){
             throw new IllegalArgumentException("O valor de retirada deve ser positivo");
         }
-        Account account = repository.findByAccountNumber(number).
-                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
-
+        Account account = getAccount(number);
         account.setBalance(account.getBalance().subtract(amount));
         repository.save(account);
-
     }
 
-    private Account getAccount(String id) {
-        return repository.findById(id).
+    private Account getAccount(String number) {
+        return repository.findByAccountNumber(number).
                 orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
     }
 

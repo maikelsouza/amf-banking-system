@@ -1,5 +1,6 @@
 package com.amf.banking.system.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 @Document(collection = "transactions")
 public class Transaction {
 
@@ -20,7 +22,7 @@ public class Transaction {
 
     private BigDecimal amount;
 
-    private String type;
+    private String type = "TRANSFERÊNCIA";
 
     private LocalDateTime timestamp = LocalDateTime.now();
 

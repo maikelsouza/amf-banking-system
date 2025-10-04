@@ -31,18 +31,32 @@ public class AccountService {
         return  modelMapper.map(accountBd, AccountResponseDto.class);
     }
 
-    public BigDecimal getAccountBalance(String id){
-        Account account = getAccount(id);
+    public BigDecimal getAccountBalance(String number){
+        Account account = repository.findByAccountNumber(number).
+                        orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
         return account.getBalance();
     }
 
-    public void deposit(String id, BigDecimal amount){
+    public void deposit(String number, BigDecimal amount){
         if (amount.compareTo(BigDecimal.ZERO) < 0){
             throw new IllegalArgumentException("O valor do depósito deve ser positivo");
         }
-        Account account = getAccount(id);
+        Account account = repository.findByAccountNumber(number).
+                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
         account.setBalance(account.getBalance().add(amount));
         repository.save(account);
+    }
+
+    public void withdraw(String number, BigDecimal amount){
+        if (amount.compareTo(BigDecimal.ZERO) < 0){
+            throw new IllegalArgumentException("O valor de retirada deve ser positivo");
+        }
+        Account account = repository.findByAccountNumber(number).
+                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
+
+        account.setBalance(account.getBalance().subtract(amount));
+        repository.save(account);
+
     }
 
     private Account getAccount(String id) {

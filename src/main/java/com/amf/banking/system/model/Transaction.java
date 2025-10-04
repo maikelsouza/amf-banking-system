@@ -22,9 +22,9 @@ public class Transaction {
 
     private BigDecimal amount;
 
-    private String type = "TRANSFERÊNCIA";
+    private String type;
 
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime timestamp;
 
     private String createdBy;
 }

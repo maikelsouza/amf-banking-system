@@ -2,6 +2,7 @@ package com.amf.banking.system.service;
 
 import com.amf.banking.system.dto.AccountRequestDto;
 import com.amf.banking.system.dto.AccountResponseDto;
+import com.amf.banking.system.dto.TransactionResponseDto;
 import com.amf.banking.system.model.Account;
 import com.amf.banking.system.repository.AccountRepository;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 
 @AllArgsConstructor
@@ -20,6 +23,8 @@ public class AccountService {
     private final ModelMapper modelMapper;
 
     private final ClientService clientService;
+
+    private final TransactionService transactionService;
 
     public AccountResponseDto create(AccountRequestDto accountRequestDto) {
         if (!clientService.existsById(accountRequestDto.getClientId())) {
@@ -52,6 +57,10 @@ public class AccountService {
         Account account = getAccount(number);
         account.setBalance(account.getBalance().subtract(amount));
         repository.save(account);
+    }
+
+    public List<TransactionResponseDto> getTransactions(String number, LocalDateTime startDate, LocalDateTime endDate){
+        return transactionService.findByAccountAndTimestampBetween(number, startDate, endDate);
     }
 
     private Account getAccount(String number) {

@@ -2,7 +2,7 @@ package com.amf.banking.system.controller;
 
 
 import com.amf.banking.system.dto.TransactionRequestDto;
-import com.amf.banking.system.service.TransactionService;
+import com.amf.banking.system.service.TransferService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/transactions")
 public class TransactionController {
 
-    private final TransactionService service;
+    private final TransferService service;
 
 
     @PostMapping

@@ -3,6 +3,8 @@ package com.amf.banking.system.service;
 import com.amf.banking.system.dto.AccountRequestDto;
 import com.amf.banking.system.dto.AccountResponseDto;
 import com.amf.banking.system.dto.TransactionResponseDto;
+import com.amf.banking.system.exception.BusinessException;
+import com.amf.banking.system.exception.NotFoundException;
 import com.amf.banking.system.model.Account;
 import com.amf.banking.system.repository.AccountRepository;
 import lombok.AllArgsConstructor;
@@ -28,7 +30,7 @@ public class AccountService {
 
     public AccountResponseDto create(AccountRequestDto accountRequestDto) {
         if (!clientService.existsById(accountRequestDto.getClientId())) {
-            throw new IllegalArgumentException("Cliente não encontrado");
+            throw new NotFoundException("Cliente não foi encontrado");
         }
         Account account = modelMapper.map(accountRequestDto, Account.class);
         account.setAccountNumber(generateAccountNumber());
@@ -43,7 +45,7 @@ public class AccountService {
 
     public void deposit(String number, BigDecimal amount){
         if (amount.compareTo(BigDecimal.ZERO) < 0){
-            throw new IllegalArgumentException("O valor do depósito deve ser positivo");
+            throw new BusinessException("O valor do depósito deve ser positivo");
         }
         Account account = getAccount(number);
         account.setBalance(account.getBalance().add(amount));
@@ -52,7 +54,7 @@ public class AccountService {
 
     public void withdraw(String number, BigDecimal amount){
         if (amount.compareTo(BigDecimal.ZERO) < 0){
-            throw new IllegalArgumentException("O valor de retirada deve ser positivo");
+            throw new BusinessException("O valor de retirada deve ser positivo");
         }
         Account account = getAccount(number);
         account.setBalance(account.getBalance().subtract(amount));
@@ -65,7 +67,7 @@ public class AccountService {
 
     private Account getAccount(String number) {
         return repository.findByAccountNumber(number).
-                orElseThrow(() -> new IllegalArgumentException("Conta não encontrada"));
+                orElseThrow(() -> new NotFoundException("Conta não foi encontrada"));
     }
 
     private String generateAccountNumber() {

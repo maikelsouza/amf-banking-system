@@ -17,8 +17,8 @@ public class TransactionService {
     private final TransactionRepository repository;
 
 
-    public Transaction saveTransaction(Transaction transaction) {
-        return repository.save(transaction);
+    public void saveTransaction(Transaction transaction) {
+        repository.save(transaction);
     }
 
     public List<TransactionResponseDto> findByAccountAndTimestampBetween(String number, LocalDateTime startDate, LocalDateTime endDate){

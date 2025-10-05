@@ -51,8 +51,26 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         log.error(e.getMessage());
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         problemDetail.setTitle(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
-        problemDetail.setTitle("An unexpected internal error occurred");
         problemDetail.setType(URI.create("/errors/internal"));
+        return problemDetail;
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public ProblemDetail handleBusinessException(BusinessException e) {
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problemDetail.setTitle("Violação de regra de negócio");
+        problemDetail.setDetail(e.getMessage());
+        problemDetail.setType(URI.create("/errors/business"));
+        return problemDetail;
+    }
+
+
+    @ExceptionHandler(NotFoundException.class)
+    public ProblemDetail NotFoundException(NotFoundException e){
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        problemDetail.setTitle("Recurso não encontrado");
+        problemDetail.setDetail(e.getMessage());
+        problemDetail.setType(URI.create("/errors/not-found"));
         return problemDetail;
     }
 }

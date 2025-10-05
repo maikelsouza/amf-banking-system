@@ -1,6 +1,7 @@
 package com.amf.banking.system.service;
 
 import com.amf.banking.system.dto.TransactionRequestDto;
+import com.amf.banking.system.exception.BusinessException;
 import com.amf.banking.system.model.Transaction;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,12 +18,12 @@ public class TransferService {
     public void transfer(TransactionRequestDto transactionRequestDto){
 
         if (transactionRequestDto.getOriginAccountId().equalsIgnoreCase(transactionRequestDto.getDestinationAccountId())){
-            throw new IllegalArgumentException("A conta de origem e destino devem ser distintas");
+            throw new BusinessException("A conta de origem e destino devem ser distintas");
         }
 
         BigDecimal accountBalance = accountService.getAccountBalance(transactionRequestDto.getOriginAccountId());
         if (accountBalance.compareTo(transactionRequestDto.getAmount()) < 0){
-            throw new IllegalArgumentException("A conta de origem não tem saldo");
+            throw new BusinessException("A conta de origem não tem saldo");
         }
 
         accountService.withdraw(transactionRequestDto.getOriginAccountId(), transactionRequestDto.getAmount());

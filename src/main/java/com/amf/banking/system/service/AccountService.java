@@ -44,7 +44,7 @@ public class AccountService {
     }
 
     public void deposit(String number, BigDecimal amount){
-        if (amount.compareTo(BigDecimal.ZERO) < 0){
+        if (amount.compareTo(BigDecimal.ZERO) <= 0){
             throw new BusinessException("O valor do depósito deve ser positivo");
         }
         Account account = getAccount(number);
@@ -53,7 +53,7 @@ public class AccountService {
     }
 
     public void withdraw(String number, BigDecimal amount){
-        if (amount.compareTo(BigDecimal.ZERO) < 0){
+        if (amount.compareTo(BigDecimal.ZERO) <= 0){
             throw new BusinessException("O valor de retirada deve ser positivo");
         }
         Account account = getAccount(number);

@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @Service
 public class ClientService {
@@ -21,6 +23,11 @@ public class ClientService {
         if (repository.existsByCpf(clientRequestDto.getCpf())){
             throw new BusinessException("Já existe um cliente cadastrado com esse cpf");
         }
+
+        if (clientRequestDto.getBirthDate().isAfter(LocalDate.now())){
+            throw new BusinessException("A data de nascimento deve ser inferior ao dia atual");
+        }
+
         Client client = modelMapper.map(clientRequestDto, Client.class);
         Client clientBd = repository.save(client);
         return  modelMapper.map(clientBd, ClientResponseDto.class);

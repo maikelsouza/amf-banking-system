@@ -31,10 +31,18 @@ A ideia é criar uma API REST para o back-office e, opcionalmente, uma interface
 
 ## Testes
 
-Para executar todos os testes, você deve executar o comando maven `mvn test` 
+### Executar todos os testes
+Você deve executar o comando maven `mvn test` 
+
+### Executar Separadamente
+Abaixo tem os endereços dos testes de integração e unitários, respectivamente. 
+
 
 1. [Arquivos de teste de integração](src/test/java/com/amf/banking/system/integration)
 2. [Arquivos de testes unitários](src/test/java/com/amf/banking/system/service)
+   
+* Exemplo para executar um arquivo de teste: `mvn -Dtest=AccountServiceTest test`
+* Exemplo para executar um método de um arquivo de teste: `mvn -Dtest=AccountServiceTest#shouldCreatedAnAccount test`
 
 ## Documentação da API
 

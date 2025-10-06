@@ -24,6 +24,4 @@ public class Account {
     private AccountType type;
 
     private BigDecimal balance = BigDecimal.ZERO;
-
-    private LocalDateTime createdAt = LocalDateTime.now();
 }

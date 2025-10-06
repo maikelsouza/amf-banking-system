@@ -26,5 +26,22 @@ A ideia é criar uma API REST para o back-office e, opcionalmente, uma interface
 
 ## Passo a passo para executar a API
 
-Inicialize o container docker via comando: `docker-compose up -d`  
-[Executar a classe AmfBankingSystemApplication](src/main/java/com/amf/banking/system/AmfBankingSystemApplication.java)
+1. Inicialize o container docker via comando: `docker-compose up -d`  
+2. [Executar a classe AmfBankingSystemApplication](src/main/java/com/amf/banking/system/AmfBankingSystemApplication.java)
+
+## Testes
+
+1. [Arquivos de teste de integração](src/test/java/com/amf/banking/system/integration)
+2. [Arquivos de testes unitários](src/test/java/com/amf/banking/system/service)
+
+## Documentação da API
+
+### Swagger (necessário inicializar a aplicação)
+
+[Documentação Swagger](http://localhost:8080/swagger-ui/index.html)
+
+### Download do Arquivo Json (Postman)
+
+[📥 Baixar Postman](src/main/resources/postman/Biblioteca-rest.postman_collection.json)
+
+

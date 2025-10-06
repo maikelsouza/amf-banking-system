@@ -31,6 +31,8 @@ A ideia é criar uma API REST para o back-office e, opcionalmente, uma interface
 
 ## Testes
 
+Para executar todos os testes, você deve executar o comando maven `mvn test` 
+
 1. [Arquivos de teste de integração](src/test/java/com/amf/banking/system/integration)
 2. [Arquivos de testes unitários](src/test/java/com/amf/banking/system/service)
 

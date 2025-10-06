@@ -47,7 +47,7 @@ public class AccountIntegrationTest {
         Account accountDb = repository.findByAccountNumber("ACC-001").orElse(null);
         assertThat(accountDb).isNotNull();
         assertThat(accountDb.getClientId()).isEqualTo("client123");
-        assertThat(accountDb.getBalance()).isEqualByComparingTo("100.00");
+        assertThat(accountDb.getBalance()).isEqualTo("100.00");
     }
 
 }

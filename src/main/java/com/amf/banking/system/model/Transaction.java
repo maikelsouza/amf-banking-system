@@ -2,6 +2,8 @@ package com.amf.banking.system.model;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -26,5 +28,9 @@ public class Transaction {
 
     private LocalDateTime timestamp;
 
+    @CreatedBy
     private String createdBy;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
 }

@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"clientId\": \"68e18b596dcb25d5c2af654c\",\r\n    \"type\": \"CHECKING\"    \r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,7 +127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"clientId\": \"68e01e549bab49e557505529\",\r\n    \"type\": \"CHECKING\"    \r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"

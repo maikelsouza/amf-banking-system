@@ -53,6 +53,6 @@ Abaixo tem os endereços dos testes de integração e unitários, respectivament
 
 ### Download do Arquivo Json (Postman)
 
-[📥 Baixar Postman](src/main/resources/postman/Amf-banking-system.postman_collection.json)
+[📥 Baixar Arquivo](src/main/resources/postman/Amf-banking-system.postman_collection.json)
 
 

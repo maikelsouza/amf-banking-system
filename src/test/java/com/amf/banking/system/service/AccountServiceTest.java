@@ -63,7 +63,7 @@ class AccountServiceTest {
         when(repository.save(Mockito.any())).thenReturn(account);
 
         AccountRequestDto accountRequestDto = AccountRequestDto.builder()
-                .type(AccountType.valueOf(AccountType.SAVINGS.name()))
+                .type(AccountType.valueOf(AccountType.POUPANCA.name()))
                 .clientId(clientId)
                 .build();
 
@@ -85,7 +85,7 @@ class AccountServiceTest {
         when(clientService.existsById(clientId)).thenReturn(false);
 
         AccountRequestDto accountRequestDto = AccountRequestDto.builder()
-                .type(AccountType.valueOf(AccountType.SAVINGS.name()))
+                .type(AccountType.valueOf(AccountType.POUPANCA.name()))
                 .clientId(clientId)
                 .build();
 

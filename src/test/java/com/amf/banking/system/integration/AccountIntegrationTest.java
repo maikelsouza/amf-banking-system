@@ -38,7 +38,7 @@ public class AccountIntegrationTest {
         account.setClientId("client123");
         account.setAccountNumber("ACC-001");
         account.setBalance(new BigDecimal("100.00"));
-        account.setType(AccountType.SAVINGS);
+        account.setType(AccountType.CORRENTE);
 
         account = repository.save(account);
 

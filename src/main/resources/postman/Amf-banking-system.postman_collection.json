@@ -51,7 +51,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"clientId\": \"68e411f153203ccef7c36a8a\",\r\n    \"type\": \"SAVINGS\"    \r\n}",
+							"raw": "{\r\n    \"clientId\": \"NUMERO_ID_CLIENTE_RETORNADO_CRIACAO_DELE\",\r\n    \"type\": \"CORRENTE\"    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,7 +91,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/accounts/82799478/transactions?startDate=2025-10-01T00:00:00&endDate=2025-10-04T23:59:59",
+							"raw": "localhost:8080/api/v1/accounts/NUMERO_CONTA/transactions?startDate=2025-10-01T00:00:00&endDate=2025-10-04T23:59:59",
 							"host": [
 								"localhost"
 							],
@@ -100,7 +100,7 @@
 								"api",
 								"v1",
 								"accounts",
-								"82799478",
+								"NUMERO_CONTA",
 								"transactions"
 							],
 							"query": [
@@ -135,7 +135,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/accounts/28040055/balance",
+							"raw": "localhost:8080/api/v1/accounts/NUMERO_CONTA/balance",
 							"host": [
 								"localhost"
 							],
@@ -144,7 +144,7 @@
 								"api",
 								"v1",
 								"accounts",
-								"28040055",
+								"NUMERO_CONTA",
 								"balance"
 							]
 						}
@@ -166,7 +166,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/accounts/28040055/deposit",
+							"raw": "localhost:8080/api/v1/accounts/NUMERO_CONTA/deposit",
 							"host": [
 								"localhost"
 							],
@@ -175,7 +175,7 @@
 								"api",
 								"v1",
 								"accounts",
-								"28040055",
+								"NUMERO_CONTA",
 								"deposit"
 							]
 						}
@@ -194,7 +194,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"originAccountId\": \"28040055\",\r\n    \"destinationAccountId\": \"52044015\",\r\n    \"amount\": \"5.00\"    \r\n}\r\n\r\n",
+							"raw": "{\r\n    \"originAccountId\": \"NUMERO_CONTA1\",\r\n    \"destinationAccountId\": \"NUMERO_CONTA2\",\r\n    \"amount\": \"5.00\"    \r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"

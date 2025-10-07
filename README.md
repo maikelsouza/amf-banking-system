@@ -28,6 +28,7 @@ A ideia é criar uma API REST para o back-office e, opcionalmente, uma interface
 
 1. Inicialize o container docker via comando: `docker-compose up -d`  
 2. [Executar a classe AmfBankingSystemApplication](src/main/java/com/amf/banking/system/AmfBankingSystemApplication.java)
+3. Porta: 8080
 
 ## Testes
 
